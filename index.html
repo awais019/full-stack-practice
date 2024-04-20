@@ -1,1 +1,19 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Sockets</title>
+  </head>
+  <body></body>
+  <script>
+    let ws;
+    const proto = window.location.protocol == "https" ? "wss" : "ws";
+
+    ws = new WebSocket(`${proto}://${window.location.host}`);
+
+    ws.onmessage = (event) => {
+      console.log(event.data);
+    };
+  </script>
+</html>
