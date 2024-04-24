@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MongoDB Sample App</title>
+  </head>
+  <body>
+    <input type="search" name="search" id="search" placeholder="Search" />
+    <button id="btn">Search</button>
+    <pre>
+        <code id="code"></code>
+    </pre>
+
+    <script>
+      const search = document.getElementById("search");
+      const code = document.getElementById("code");
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", async () => {
+        code.innerText = "loading...";
+        const res = await fetch(`/get?search=${search.value}`);
+        const json = await res.json();
+
+        code.innerText = "\n" + JSON.stringify(json, null, 4);
+      });
+    </script>
+  </body>
+</html>
